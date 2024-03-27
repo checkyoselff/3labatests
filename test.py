@@ -28,7 +28,7 @@ def calculator(num1, num2, operator):
         if num2 != 0:
             return num1 / num2
         else:
-            return math.nan
+            return "Error: Division by zero"
     else:
         return "Error: Invalid operator"
 
@@ -55,8 +55,7 @@ def test_calculator():
     assert calculator(5, 2, '-') == 3
     assert calculator(2, 3, '*') == 6
     assert calculator(6, 3, '/') == 2
-    assert math.isnan(calculator(4, 0, '/'))
-
+    assert calculator(4, 0, '/') == "Error: Division by zero"
 
     # Тестирование на некорректные операторы
     assert calculator(1, 2, '$') == "Error: Invalid operator"
