@@ -1,0 +1,27 @@
+name: Run Python Tests
+
+on:
+  push:
+    branches:
+      - main  # замените на вашу основную ветку, если она называется иначе
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+      
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.x'
+        
+    - name: Install dependencies
+      run: pip install -r requirements.txt
+      
+    - name: Run tests
+      run: |
+        python -m pytest test.py
+        assert math.isnan($(python -c "from test import calculator; import math; print(calculator(4, 0, '/'))"))
